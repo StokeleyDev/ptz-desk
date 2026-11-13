@@ -365,7 +365,7 @@ function App() {
     <Theme theme={themes[defaultThemeSlug]} mode={scheme}>
       <main className="console">
         <header className="console-header">
-          <h1><img src="./app-icon.png" alt="" />AGL PTZ Controller</h1>
+          <h1><img src="./app-icon.png" alt="" />PTZ DESK</h1><small aria-label="Version 1.0.0">v1.0.0</small>
           <Button className="rooms-open-button" label="Аудитории" title="Аудитории" size="sm" onClick={() => setRoomsOpen(true)}>
             <span className="btn-content"><Icon name="rooms" /><span className="remote-open-label">Аудитории{state.hub?.rooms?.length ? ` · ${state.hub.rooms.filter(r => r.online).length}/${state.hub.rooms.length}` : ''}</span></span>
           </Button>

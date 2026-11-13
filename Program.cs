@@ -289,7 +289,7 @@ internal sealed partial class MainForm : Form, IMessageFilter
     public MainForm()
     {
         Icon = System.Drawing.Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-        Text = "AGL PTZ Controller";
+        Text = "PTZ Desk";
         FormClosing += CloseRemoteBeforeExit;
         ClientSize = new Size(1150, 752);
         MinimumSize = HasReactInterface ? new Size(420, 410) : new Size(960, 640);

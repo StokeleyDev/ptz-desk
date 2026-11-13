@@ -105,7 +105,7 @@ public static class PtzTestClock {
             EnumThreadWindows(thread.Id, (hwnd, _) => {
                 var title = new StringBuilder(100);
                 GetWindowText(hwnd, title, 100);
-                if (title.ToString() != "AGL PTZ Controller") return true;
+                if (title.ToString() != "PTZ Desk") return true;
                 posted = PostMessage(hwnd, 16, IntPtr.Zero, IntPtr.Zero);
                 return false;
             }, IntPtr.Zero);

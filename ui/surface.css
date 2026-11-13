@@ -1275,3 +1275,11 @@
   display: inline-flex !important; align-items: center; justify-content: center; line-height: 1;
 }
 .sound-close svg { display: block; flex-shrink: 0; margin: 0; }
+
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("./barlow-condensed-800.woff2") format("woff2");
+  font-weight: 800;
+  font-display: swap;
+}
+.console-header h1 { font-family: "Barlow Condensed", "Segoe UI", sans-serif; font-weight: 800; letter-spacing: .025em; }

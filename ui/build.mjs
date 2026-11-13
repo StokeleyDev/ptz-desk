@@ -27,3 +27,4 @@ await build({
 });
 await copyFile('app-icon.png', 'dist/app-icon.png');
 await copyFile('node_modules/@fontsource-variable/inter/LICENSE', 'dist/Inter-LICENSE.txt');
+await copyFile('Barlow-OFL.txt', 'dist/Barlow-OFL.txt');
