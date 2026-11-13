@@ -4,3 +4,12 @@ publish/
 ui/node_modules/
 ui/dist/
 release/
+
+# Local / private: never publish
+CLAUDE.md
+PRODUCT.md
+.claude/
+Data/
+portable.flag
+*.user
+.vs/
