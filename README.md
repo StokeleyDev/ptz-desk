@@ -72,4 +72,4 @@ The version is set in `AGL.PTZ.Controller.csproj`.
 
 ## License
 
-A project license has not yet been selected.
+See the [MIT License](LICENSE).
