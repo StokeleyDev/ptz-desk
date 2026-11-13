@@ -29,5 +29,5 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           $dir = "../release/$env:GITHUB_REF_NAME"
-          gh release create $env:GITHUB_REF_NAME "$dir/PTZ-Desk-Setup-x64.exe" "$dir/PTZ-Desk-Portable-x64.zip" --verify-tag --generate-notes
+          gh release create $env:GITHUB_REF_NAME "$dir/PTZ-Desk-Setup-x64.exe" "$dir/PTZ-Desk-Portable-x64.zip" --verify-tag --generate-notes --latest
           if ($LASTEXITCODE) { throw 'Release publication failed' }
