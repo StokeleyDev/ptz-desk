@@ -1,0 +1,33 @@
+name: Windows release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build and package
+        shell: pwsh
+        run: |
+          $version = ([xml](Get-Content AGL.PTZ.Controller.csproj -Raw)).Project.PropertyGroup.Version
+          if ($env:GITHUB_REF_NAME -ne "v$version") { throw 'Tag does not match project version' }
+          choco install innosetup -y --no-progress
+          if ($LASTEXITCODE) { throw 'Inno Setup installation failed' }
+          & ./tools/Build-Distribution.ps1
+      - name: Publish GitHub Release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $dir = "../release/$env:GITHUB_REF_NAME"
+          gh release create $env:GITHUB_REF_NAME "$dir/PTZ-Desk-Setup-x64.exe" "$dir/PTZ-Desk-Portable-x64.zip" --verify-tag --generate-notes
+          if ($LASTEXITCODE) { throw 'Release publication failed' }
