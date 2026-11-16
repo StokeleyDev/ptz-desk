@@ -33,12 +33,6 @@ jobs:
           if ($LASTEXITCODE -eq 0) {
             gh release upload $env:GITHUB_REF_NAME "$dir/PTZ-Desk-Setup-x64.exe" "$dir/PTZ-Desk-Portable-x64.zip" --clobber
             if ($LASTEXITCODE) { throw 'Release asset replacement failed' }
-            if ($env:GITHUB_REF_NAME -eq 'v1.0.0') {
-              gh release edit v1.0.0 --latest
-              if ($LASTEXITCODE) { throw 'Could not mark v1.0.0 as latest' }
-              gh release delete v1.5.4 --cleanup-tag --yes
-              if ($LASTEXITCODE) { throw 'Could not remove the old release and tag' }
-            }
             exit 0
           }
           gh release create $env:GITHUB_REF_NAME "$dir/PTZ-Desk-Setup-x64.exe" "$dir/PTZ-Desk-Portable-x64.zip" --verify-tag --generate-notes --latest
